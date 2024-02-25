@@ -1,0 +1,209 @@
+{% extends 'Bank/base.html' %}
+
+{% block content %}
+<head>
+    {% load static %}
+    <script>
+        function sub()
+{
+    if(cname.value=='')
+    {
+        document.getElementById('cnm').innerHTML='This Field is required'
+        
+    }  
+    if(fname.value=='') 
+    {
+        document.getElementById('fnm').innerHTML='This Field is required'    
+    } 
+    if(address.value=='')
+    {
+        document.getElementById('addr').innerHTML='This Field is required'
+        
+    }  
+    if(city.value=='') 
+    {
+        document.getElementById('ct').innerHTML='This Field is required'    
+    }
+    if(state.value=='')
+    {
+        document.getElementById('st').innerHTML='This Field is required'
+        
+    }  
+    if(pin.value=='') 
+    {
+        document.getElementById('pn').innerHTML='This Field is required'    
+    }
+    if(mobile.value=='')
+    {
+        document.getElementById('mb').innerHTML='This Field is required'
+        
+    }  
+    if(dob.value=='') 
+    {
+        document.getElementById('db').innerHTML='This Field is required'    
+    }
+    if(religion.value=='')
+    {
+        document.getElementById('rljn').innerHTML='This Field is required'
+        
+    }  
+    if(gender.value=='') 
+    {
+        document.getElementById('gen').innerHTML='This Field is required'    
+    }
+    if(amount.value=='') 
+    {
+        document.getElementById('amt').innerHTML='This Field is required'    
+    }
+    else{
+        if(Number(amount.value)<=999)
+        {
+            document.getElementById('amt').innerHTML='Amount should be minimum 1000 '
+            amount.value=''
+            amount.focus();
+            
+        }
+        }
+
+    }
+    
+    </script>
+    <link rel="stylesheet" href="{% static 'Bank/css/OpenAccount.css' %}"/>
+    <title>Open Account</title>
+    <style>
+        label{
+            margin-left:30px;
+        }
+        
+        .FormDiv{
+        
+        
+            background-color: lightgray;
+            border-radius: 30px;
+            display: inline-block;
+        }
+         input{
+             margin: 0px;
+         }   
+            
+        button{
+            width: 200px;
+            margin-left: auto;
+        }
+        h2{
+            text-align: center;
+            background-color: darkcyan;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #menu{
+            background-image: linear-gradient(to right,darkgreen, violet,darkgreen);
+          }
+    </style>
+</head>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class='btn col-xl-4 col-sm-12 col-md-5 col-lg-4' style="background-color: gray; display:inline-block" id='menu'>
+        <a href="/openAC">
+            <button type="button" class="btn btn-primary btn-lg mx-5 my-3">Open Account</button><br><br>
+            </a>
+            <a href="/withdraw">
+            <button type="button" class="btn btn-primary btn-lg mx-5">Withdraw</button><br><br>
+          </a>
+          <a href="/deposit">
+            <button type="button" class="btn btn-primary btn-lg mx-5">Deposit</button><br><br>
+          </a>
+          <a href="/balanceEnq">
+            <button type="button" class="btn btn-primary btn-lg mx-5">Balance Check</button><br><br>
+          </a>
+          <a href="/changeMobile">
+            <button type="button" class="btn btn-primary btn-lg mx-5">Change Mobile No.</button><br><br>
+          </a>
+          <a href="/fundTransfer">
+            <button type="button" class="btn btn-primary btn-lg mx-5">Fund Transfer</button><br><br>
+          </a>
+          <a href="/closeAC">
+            <button type="button" class="btn btn-primary btn-lg mx-5">Close Account</button><br><br>
+            </a>
+            <a href="/transaction">
+                <button type="button" class="btn btn-primary btn-lg mx-5">Transaction History</button><br><br>
+                </a>
+       
+       </div>
+        <div class="FormDiv  col-xl-8 col-sm-12 col-md-7 col-lg-8">
+            <form method='post'>
+                {% csrf_token %}
+                <br>
+                <h2 class="alabel">Account Open form</h2>
+                <br>
+            <label>Your Full Name<span style="color: red; font-size:20px">*</span></label><br>
+            <input type="text" class="form-control" id="cname" name="cname" required/>
+            <span style='color:red' id='cnm'></span>
+            <br><br>
+    
+            <label>Fathe's Name<span style="color: red; font-size:20px">*</span></label><br>
+            <input type="text" class="form-control" id="fname" name="fname" required/>
+            <span style='color:red' id='fnm'></span><br>
+            <label>Address<span style="color: red; font-size:20px">*</span> </label><br>
+            <input type="text" id='address' name="address" size="100%" class="form-control" required/>
+            <span style='color:red' id='addr'></span><br><br>
+           <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <label>City<span style="color: red; font-size:20px">*</span></label>
+            <input type="text" id='city' name="city" class="form-control" required/>
+            <span style='color:red' id='ct'></span>
+                </div>
+                <div class="col-sm-4">
+                    <label>State<span style="color: red; font-size:20px">*</span></label>
+                <input type="text" id='state' name="state" class="form-control" class="form-control" required/>
+                <span style='color:red' id='st'></span></div>
+                <div class="col-sm-4">
+                    <label>PinCode<span style="color: red; font-size:20px">*</span></label>
+            <input type="text" id='pin' name="pin" class="form-control" required/>
+            <span style='color:red' id='pn'></span>
+            </div></div></div><br>
+            <div class="container">
+                <div class="row">
+        <div class="col-sm-4">
+            <label>Mobile<span style="color: red; font-size:20px">*</span></label>
+          <input type="number" id='mobile' name='mobile' class="form-control" required/>
+          <span style='color:red' id='mb'></span> </div>
+        <div class="col-sm-4">
+            <label>DOB<span style="color: red; font-size:20px">*</span></label>
+            <input type="text" id='dob' name='dob' placeholder="YYYY-MM-DD" class="form-control" required/> 
+            <span style='color:red' id='db'></span>
+        </div>
+        <div class="col-sm-4">
+            <label>Religion<span style="color: red; font-size:20px">*</span></label>
+            <input type="text" id='religion' name='religion' class="form-control" required/>
+            <span style='color:red' id='rljn'></span>
+        </div> </div></div><br><br>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <label>Gender<span style="color: red; font-size:20px">*</span></label><br>
+                    <input type="text" id='gender' name="gender" class="form-control" required/>
+                    <span style='color:red' id='gen'></span>
+                </div>
+     <div class="col-sm-6">
+            <label>Amount(Amount must be minimum 1000 Rs.)<span style="color: red; font-size:20px">*</span></label><br>
+            <input type="text" id='amount' name="amount" class="form-control" required/>
+            <span style='color:red' id='amt'></span><br><br>
+     </div></div></div>
+            <div class="container">
+                <div class="row">
+            <div class="col-sm-6">
+            <button type="submit" class="btn btn-success btn-lg" onclick='sub()'>Submit</button>
+            </div>
+            <div class="col-sm-6">
+            <button type="reset" class="btn btn-danger btn-lg">Reset</button>
+            </div></div></div>
+               </form><br><br><br>
+          </div>
+    </div>
+  </div>
+  
+
+{% endblock %}

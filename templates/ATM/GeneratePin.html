@@ -1,0 +1,114 @@
+{% extends 'ATM/base.html' %}
+
+{% block content %}
+<head>
+    <script>
+        function generate()
+    {
+        if(account.value=='') 
+        {
+            document.getElementById('ac').innerHTML='This Field is required'    
+        }
+        if(mobile.value=='') 
+        {
+            document.getElementById('mb').innerHTML='This Field is required'    
+        }
+        if(otp.value=='') 
+        {
+            document.getElementById('ot').innerHTML='This Field is required'    
+        }
+       
+    }
+    </script>
+    <title>Generate Pin</title>
+    <style>
+        label{
+            margin-left: 50px;
+        }
+        
+        .FormDiv{
+            height: auto;
+            background-color: lightgray;
+            border-radius: 30px;
+            margin:auto;
+            display: inline-block;
+        }
+        button{
+            width: 200px;
+            margin-left: 30px;
+        }
+        h2{
+            text-align: center;
+            background-color: darkcyan;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        input{
+            
+            height:45px;
+            font-size:25px;
+            padding-left:10px;
+            margin:auto;
+        }
+        #menu{
+            background-image: linear-gradient(to right,darkgreen, violet,darkgreen);
+          }
+    </style>
+    </head>
+    <div class="container-fluid">
+        <div class="row">
+            <div class='btn col-xl-4 col-sm-12 col-md-5 col-lg-4' style="background-color: gray;" id='menu'>
+                <a href="/atm/generatePin">
+              <button type="button" class="btn btn-primary btn-lg mx-5 my-3">Generate ATM Pin</button><br><br>
+                </a>
+                <a href="/atm/withdraw">
+              <button type="button" class="btn btn-primary btn-lg mx-5">Withdraw</button><br><br>
+                    </a>
+                <a href="/atm/deposit">
+              <button type="button" class="btn btn-primary btn-lg mx-5">Deposit</button><br><br>
+                    </a>
+                <a href="/atm/balanceEnq">
+              <button type="button" class="btn btn-primary btn-lg mx-5">Balance Enquiry</button><br><br>
+                    </a>
+                <a href="/atm/transaction">
+              <button type="button" class="btn btn-primary btn-lg mx-5">Transaction History</button><br><br>
+                </a>
+            </div>
+            <div class="FormDiv col-xl-8 col-sm-12 col-md-7 col-lg-8">
+                <form method='post'>
+                    {% csrf_token %}
+                    <br>
+                    <h2 class="alabel">Generate ATM Pin Form</h2>
+                    <br>
+                <label> Enter your A/C Number<span style="color: red; font-size:20px">*</span></label><br>
+                <input type="text" id='account' name="account" class="form-control" required/>
+                <span style='color:red' id='ac'></span><br><br>
+                <label> Enter Mobile number which are link from Bank A/C<span style="color: red; font-size:20px">*</span></label><br>
+                <input type="text" id='mobile' name="mobile" class="form-control" required/>
+                <span style='color:red' id='mb'></span><br><br>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label>OTP<span style="color: red; font-size:20px">*</span></label>     
+                 <input type="text" value='{{sotp}}' id="iot" name="iot" class="form-control" disabled style='text-align:center;font-size:25px'>
+                 </div>
+                 <div class="col-sm-6">
+                    <label>Enter_OTP<span style="color: red; font-size:20px">*</span></label>     
+                     <input type="text" id="otp" name="otp" class="form-control" style='text-align:center;font-size:25px' required>
+                     <span style='color:red' id='ot'></span>
+                     </div></div></div><br><br><br><br>
+                     <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                <button type="submit" onclick='generate()' class="btn btn-success btn-lg">Submit</button>
+                </div>
+                <div class="col-sm-6">
+                <button type="reset" class="btn btn-danger btn-lg">Reset</button>
+                </div></div></div><br><br><br>
+            
+                   </form>
+            </div>
+        </div>
+      </div>
+
+{% endblock %}

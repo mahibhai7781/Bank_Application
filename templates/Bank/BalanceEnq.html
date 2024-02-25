@@ -1,0 +1,106 @@
+{% extends 'Bank/base.html' %}
+
+{% block content %}
+<head>
+  <script>
+    function balence()
+{
+    if(account.value=='') 
+    {
+        document.getElementById('ac').innerHTML='This Field is required'    
+    }
+   
+}
+
+  </script>
+<title>Balance Enquiry</title>
+
+<style>
+    label{
+        margin-left: 100px;
+    }
+    
+    .FormDiv{
+        height: 700px;
+        background-color: lightgray;
+        border-radius: 30px;
+        margin: auto;
+        display: inline-block;
+    
+    }
+    button{
+        width: 200px;
+        margin-left: 10px;
+    }
+    h2{
+        text-align: center;
+        background-color: darkcyan;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    input{
+        width:90%;
+        height:45px;
+        font-size:25px;
+        padding-left:10px;
+        margin:auto;
+    }
+    #menu{
+      background-image: linear-gradient(to right,darkgreen, violet,darkgreen);
+    }
+</style>
+</head>
+<div class="container-fluid">
+    <div class="row">
+        <div class='btn col-xl-4 col-sm-12 col-md-5 col-lg-4' style="background-color: gray; display:inline-block" id='menu'>
+        <a href="/openAC">
+            <button type="button" class="btn btn-primary btn-lg mx-5 my-3">Open Account</button><br><br>
+            </a>
+            <a href="/withdraw">
+            <button type="button" class="btn btn-primary btn-lg mx-5">Withdraw</button><br><br>
+          </a>
+          <a href="/deposit">
+            <button type="button" class="btn btn-primary btn-lg mx-5">Deposit</button><br><br>
+          </a>
+          <a href="/balanceEnq">
+            <button type="button" class="btn btn-primary btn-lg mx-5">Balance Check</button><br><br>
+          </a>
+          <a href="/changeMobile">
+            <button type="button" class="btn btn-primary btn-lg mx-5">Change Mobile No.</button><br><br>
+          </a>
+          <a href="/fundTransfer">
+            <button type="button" class="btn btn-primary btn-lg mx-5">Fund Transfer</button><br><br>
+          </a>
+          <a href="/closeAC">
+            <button type="button" class="btn btn-primary btn-lg mx-5">Close Account</button><br><br>
+            </a>
+            <a href="/transaction">
+              <button type="button" class="btn btn-primary btn-lg mx-5">Transaction History</button><br><br>
+              </a>
+       
+       </div>
+       <div class="FormDiv col-xl-8 col-sm-12 col-md-7 col-lg-8">
+        <form method='post'>
+          {% csrf_token %}
+            <br>
+            <h2 class="alabel">Balance Enquiry form</h2>
+            <br>
+        <label> Enter your A/C Number<span style="color: red; font-size:20px">*</span></label><br>
+        <input type="text" id='account' name="account" class="form-control" required/>
+        <span style='color:red' id='ac'></span><br><br>
+        <div class="container">
+            <div class="row">
+        <div class="col-sm-6">
+        <button type="submit"  onclick='balence()' class="btn btn-success btn-lg">Balance Check</button>
+        </div>
+        <div class='col-sm-6'>
+        <button type="reset" class="btn btn-danger btn-lg">Reset</button>
+        </div></div></div>
+           </form>
+    </div>
+    </div>
+  </div>
+  
+
+
+{% endblock %}

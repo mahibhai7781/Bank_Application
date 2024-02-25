@@ -1,0 +1,43 @@
+{% extends 'Bank/base.html'%}
+
+{% block content %}
+<title>Bank Application</title>
+<style>
+  #menu{
+    background-image: linear-gradient(to right,darkgreen, violet,darkgreen);
+  }
+</style>
+   <div class='container-fluid'>
+     <div class='row'>
+    <div class='btn col-xl-4 col-sm-12 col-md-5 col-lg-4' style="background-color: gray; display:inline-block" id='menu'>
+        <a href="/openAC">
+        <button type="button" class="btn btn-primary btn-lg mx-5 my-3">Open Account</button><br><br>
+        </a>
+        <a href="/withdraw">
+        <button type="button" class="btn btn-primary btn-lg mx-5">Withdraw</button><br><br>
+      </a>
+      <a href="/deposit">
+        <button type="button" class="btn btn-primary btn-lg mx-5">Deposite</button><br><br>
+      </a>
+      <a href="/balanceEnq">
+        <button type="button" class="btn btn-primary btn-lg mx-5">Balance Check</button><br><br>
+      </a>
+      <a href="/changeMobile">
+        <button type="button" class="btn btn-primary btn-lg mx-5">Change Mobile No.</button><br><br>
+      </a>
+      <a href="/fundTransfer">
+        <button type="button" class="btn btn-primary btn-lg mx-5">Fund Transfer</button><br><br>
+      </a>
+      <a href="/closeAC">
+        <button type="button" class="btn btn-primary btn-lg mx-5">Close Account</button><br><br>
+        </a>
+        <a href="/transaction">
+          <button type="button" class="btn btn-primary btn-lg mx-5">Transaction History</button><br><br>
+          </a>
+      </div> 
+
+    <div class='col-xl-8 col-sm-12 col-md-7 col-lg-8'>
+    <img src="static/Bank/images/bb3.jpg" width=100% height=100% />
+    </div>
+  </div></div>
+{% endblock %}

@@ -1,0 +1,21 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+nav img{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 150px;
+}
+
+  footer{
+      color: white;
+
+  }
+  ul li{
+      font-size: 20px;
+  }
+  .btn button{
+      width: 300px;
+  }

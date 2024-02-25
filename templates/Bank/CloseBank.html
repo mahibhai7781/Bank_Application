@@ -1,0 +1,120 @@
+{% extends 'Bank/base.html' %}
+
+{% block content %}
+<head>
+  <script>
+      function closeAC()
+      {
+          if(account.value=='') 
+          {
+              document.getElementById('ac').innerHTML='This Field is required'    
+          }
+          if(reason.value=='') 
+          {
+              document.getElementById('rjn').innerHTML='This Field is required'    
+          }
+          if(mobile.value=='') 
+          {
+              document.getElementById('mb').innerHTML='This Field is required'    
+          }
+         
+      }
+      
+    </script>
+<title>Close Bank</title>
+<style>
+    label{
+        margin-left: 100px;
+    }
+    
+    .FormDiv{
+        height:auto;
+        background-color: lightgray;
+        border-radius: 30px;
+        margin: auto;
+        margin-top:0px;
+        
+    }
+    button{
+        width: 200px;
+        margin-left:30px;
+    }
+    h2{
+        text-align: center;
+        background-color: darkcyan;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    input{
+
+        height:45px;
+        font-size:25px;
+        padding-left:10px;
+        margin:auto;
+    }
+    #menu{
+      background-image: linear-gradient(to right,darkgreen, violet,darkgreen);
+    }
+</style>
+</head>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class='btn col-xl-4 col-sm-12 col-md-5 col-lg-4' style="background-color: gray; display:inline-block" id='menu'>
+        <a href="/openAC">
+            <button type="button" class="btn btn-primary btn-lg mx-5 my-3">Open Account</button><br><br>
+            </a>
+            <a href="/withdraw">
+            <button type="button" class="btn btn-primary btn-lg mx-5">Withdraw</button><br><br>
+          </a>
+          <a href="/deposit">
+            <button type="button" class="btn btn-primary btn-lg mx-5">Deposit</button><br><br>
+          </a>
+          <a href="/balanceEnq">
+            <button type="button" class="btn btn-primary btn-lg mx-5">Balance Check</button><br><br>
+          </a>
+          <a href="/changeMobile">
+            <button type="button" class="btn btn-primary btn-lg mx-5">Change Mobile No.</button><br><br>
+          </a>
+          <a href="/fundTransfer">
+            <button type="button" class="btn btn-primary btn-lg mx-5">Fund Transfer</button><br><br>
+          </a>
+          <a href="/closeAC">
+            <button type="button" class="btn btn-primary btn-lg mx-5">Close Account</button><br><br>
+            </a>
+            <a href="/transaction">
+              <button type="button" class="btn btn-primary btn-lg mx-5">Transaction History</button><br><br>
+              </a>
+       </div>
+       <div class="FormDiv col-xl-8 col-sm-12 col-md-7 col-lg-8">
+        <form method='post'>
+          {% csrf_token %}
+            <br>
+            <h2 class="alabel">Close Bank A/C form</h2>
+            <br>
+        <label> Enter your A/C Number<span style="color: red; font-size:20px">*</span></label><br>
+        <input type="text" id='account' name="account" class="form-control" required/>
+        <span style='color:red' id='ac'></span><br><br>
+        <label> Why you want to close your Bank Account<span style="color: red; font-size:20px">*</span></label><br>
+        <input type="text" id='reason' name="reason" class="form-control" required/>
+        <span style='color:red' id='rjn'></span><br><br>
+        <label> Mobile_Number<span style="color: red; font-size:20px">*</span></label><br>
+        <input type="text" id='mobile' name="mobile" class="form-control" required/>
+        <span style='color:red' id='mb'></span><br><br>
+        
+         <div class="container">
+            <div class="row">
+                <div class='col-sm-6'>
+        <button type="submit" onclick='closeAC()' class="btn btn-success btn-lg">Submit</button>
+                </div>
+                <div class='col-sm-6'> 
+        <button type="reset" class="btn btn-danger btn-lg">Reset</button>
+                </div>
+       </div></div>
+    
+           </form><br><br><br>
+    </div>
+    </div>
+  </div>
+  
+{% endblock %}

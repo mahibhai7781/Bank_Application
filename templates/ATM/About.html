@@ -1,0 +1,50 @@
+{% extends 'ATM/Base.html' %}
+
+{% block content %}
+<head>
+    <title>About ATM</title>
+    {% load static %}
+</head>
+
+<div class='container-fluid'>
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{% static 'ATM/images/slid1.jpg' %}" class="d-block w-100" style="height:550px">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'ATM/images/slid2.jpg' %}" class="d-block w-100" style="height:550px">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'ATM/images/slid3.jpg' %}" class="d-block w-100" style="height:550px">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+</div>
+<div class='container'><br>
+  <h3 style='background-color:purple; text-align:center; color:white'>BANK OF BARODA COMPANY HISTORY</h3><br>
+<p style='text-align: justify; font-size:20px'>Bank of Baroda is one of the leading commercial public sector banks in India. The Bank's solutions includes
+ personal banking which includes deposits gen-next services retail loans credit cards debit cards services and
+  lockers; business banking which includes deposits loans and advances services and lockers; corporate banking 
+  which includes wholesale banking deposits loans and advances and services and international business which 
+  includes non-resident Indian (NRI) services foreign currency credits ECB offshore banking export finance import
+   finance correspondent banking trade finance and international treasury. The Bank offers services such as domestic
+    operations and For-ex operations. They also offer rural banking services which include deposits priority sector
+     advances remittance collection services pension and lockers. They also offer fee-based services such as cash
+      management and remittance services. The Bank is having their head office located at Baroda and their corporate
+       office is located at Mumbai. Bank of Baroda is one of India's largest banks and as on December 2020 the bank has 
+       a strong domestic presence spanning 8246 domestic branches and 11553 ATMs & Cash Recyclers supported by self
+       -service channels. The bank has a significant international presence with a network of 99 overseas branches/offices
+        subsidiaries spanning 21 countries.<p></div>
+
+        
+
+{% endblock %}
